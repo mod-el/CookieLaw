@@ -1,0 +1,12 @@
+{
+	"name": "CookieLaw",
+	"description": "Disclaimer about cookies (EU law)",
+	"version": "0.0.1",
+	"dependencies": {},
+	"css": [
+		"files/style.css"
+	],
+	"js": [
+		"files/js.js"
+	]
+}
