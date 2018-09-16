@@ -6,7 +6,7 @@ class CookieLawController extends Controller
 {
 	function index()
 	{
-		$this->viewOptions['template-module-layout'] = 'Home';
-		$this->viewOptions['template-module'] = 'CookieLaw';
+		$this->model->viewOptions['template-module-layout'] = 'Home';
+		$this->model->viewOptions['template-module'] = 'CookieLaw';
 	}
 }
