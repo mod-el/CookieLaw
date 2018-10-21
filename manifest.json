@@ -2,7 +2,9 @@
 	"name": "CookieLaw",
 	"description": "Disclaimer about cookies (EU law)",
 	"version": "0.0.1",
-	"dependencies": {},
+	"dependencies": {
+		"Core": ">=2.7.1"
+	},
 	"css": [
 		"files/style.css"
 	],
