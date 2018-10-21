@@ -11,10 +11,10 @@ class CookieLaw extends Module
 		}
 	}
 
-	public function getController(array $request, string $rule)
+	public function getController(array $request, string $rule): ?array
 	{
 		return $rule === 'cookie-law' ? [
 			'controller' => 'CookieLaw',
-		] : false;
+		] : null;
 	}
 }
