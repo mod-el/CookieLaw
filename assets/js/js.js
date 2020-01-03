@@ -18,7 +18,7 @@ function showCookieBar() {
 		var path = PATH;
 	var div = document.createElement('div');
 	div.id = 'cookie-law-bar';
-	div.innerHTML = '<div style="width: 1100px; max-width: 95%; overflow: hidden; margin: auto"><a href="#" onclick="cookieLawOk(); return false"><img src="' + path + 'model/CookieLaw/files/close.png" alt="Accetto" style="margin-top: 5px; float: right" /></a>Questo sito utilizza cookie, anche di terze parti, per inviarti pubblicità e servizi in linea con le tue preferenze. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie <a href="' + PATH + 'cookie-law" target="_blank">clicca qui</a>. Chiudendo questo banner o cliccando qualunque suo elemento acconsenti all\'uso dei cookie.</div>';
+	div.innerHTML = '<div style="width: 1100px; max-width: 95%; overflow: hidden; margin: auto"><a href="#" onclick="cookieLawOk(); return false"><img src="' + path + 'model/CookieLaw/assets/img/close.png" alt="Accetto" style="margin-top: 5px; float: right" /></a>Questo sito utilizza cookie, anche di terze parti, per inviarti pubblicità e servizi in linea con le tue preferenze. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie <a href="' + PATH + 'cookie-law" target="_blank">clicca qui</a>. Chiudendo questo banner o cliccando qualunque suo elemento acconsenti all\'uso dei cookie.</div>';
 	div.style.height = '0px';
 	div = document.body.insertBefore(div, document.body.firstChild);
 	div.offsetHeight;
