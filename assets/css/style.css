@@ -1,26 +1,53 @@
-#cookie-law-bar{
-	background: #F0F0F0;
-	color: #555;
-	border-bottom: solid #C33 1px;
+#cookie-law-bar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	width: 100%;
-	position: relative;
-	z-index: 1000;
-	overflow: hidden;
+	height: auto;
+	padding: 10px 0;
+	background: #FEFEFE;
+	color: #444;
+	border-top: solid #111 1px;
+	box-shadow: 0 -5px 10px #666;
+	z-index: 10000;
 	font-size: 14px;
 	font-weight: normal;
-
-	-webkit-transition: height 0.5s ease-in;
-	-moz-transition: height 0.5s ease-in;
-	-o-transition: height 0.5s ease-in;
-	-ms-transition: height 0.5s ease-in;
-	transition: height 0.5s ease-in;
+	transition: opacity 0.5s ease-in;
 }
 
-#cookie-law-bar > div{
-	padding: 10px 0;
+#cookie-law-bar > div {
+	width: 100%;
+	max-width: 1280px;
+	padding: 20px;
+	margin: auto;
 }
 
-#cookie-law-bar a:link, #cookie-law-bar a:visited{
-	color: #000;
-	font-weight: bold;
+a.cookie-bar-button {
+	display: inline-block;
+	text-decoration: none;
+	margin-left: 10px;
+	padding: 10px 20px;
+	border-radius: 20px;
+}
+
+a.cookie-bar-button-personalizza:link, a.cookie-bar-button-personalizza:visited {
+	border: solid #555 1px;
+	background: #FFF;
+	color: #111;
+}
+
+a.cookie-bar-button-rifiuta:link, a.cookie-bar-button-rifiuta:visited {
+	background: #A00;
+	color: #FFF;
+}
+
+a.cookie-bar-button-accetta:link, a.cookie-bar-button-accetta:visited {
+	background: #0A0;
+	color: #FFF;
+}
+
+a.cookie-bar-button:hover {
+	opacity: 0.95;
+	box-shadow: 1px 1px 10px #BBB;
 }

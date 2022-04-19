@@ -2,7 +2,7 @@
 
 use Model\Core\Controller;
 
-class CookieLawController extends Controller
+class CookiePolicyController extends Controller
 {
 	function index()
 	{

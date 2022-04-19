@@ -1,7 +1,7 @@
 {
 	"name": "CookieLaw",
-	"description": "Disclaimer about cookies (EU law)",
-	"version": "0.1.0",
+	"description": "Cookies management (EU law)",
+	"version": "1.0.0",
 	"dependencies": {
 		"Core": ">=2.9.0"
 	}

@@ -1,35 +1,39 @@
-function scriviCookie(nomeCookie, valoreCookie, durataCookie) {
-	var scadenza = new Date();
-	var adesso = new Date();
-	scadenza.setTime(adesso.getTime() + (parseInt(durataCookie) * 1000));
-	document.cookie = nomeCookie + '=' + escape(valoreCookie) + '; expires=' + scadenza.toGMTString() + '; path=/';
+function writeCookie(name, value, duration) {
+	let due = new Date();
+	let now = new Date();
+	due.setTime(now.getTime() + (parseInt(duration) * 1000));
+	document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + due.toGMTString() + '; path=/';
 }
 
 window.addEventListener('load', function () {
-	if (typeof show_cookie_bar !== 'undefined' && show_cookie_bar) {
+	if (show_model_cookie_bar)
 		showCookieBar();
-	}
 });
 
 function showCookieBar() {
-	if (typeof PATHBASE !== 'undefined')
-		var path = PATHBASE;
-	else
-		var path = PATH;
-	var div = document.createElement('div');
+	let div = document.createElement('div');
 	div.id = 'cookie-law-bar';
-	div.innerHTML = '<div style="width: 1100px; max-width: 95%; overflow: hidden; margin: auto"><a href="#" onclick="cookieLawOk(); return false"><img src="' + path + 'model/CookieLaw/assets/img/close.png" alt="Accetto" style="margin-top: 5px; float: right" /></a>Questo sito utilizza cookie, anche di terze parti, per inviarti pubblicità e servizi in linea con le tue preferenze. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie <a href="' + PATH + 'cookie-law" target="_blank">clicca qui</a>. Chiudendo questo banner o cliccando qualunque suo elemento acconsenti all\'uso dei cookie.</div>';
-	div.style.height = '0px';
+	div.innerHTML = `<div>Il sito che stai per visitare utilizza cookie o tecnologie simili, anche di terze parti, per finalità tecniche e, con il tuo consenso, anche per altre finalità come specificato nella <a href="${PATH}cookie-policy">cookie policy</a>.<br/>
+		Puoi acconsentire all’utilizzo di tali tecnologie utilizzando il pulsante “Accetta”. Chiudendo questa informativa, continui senza accettare.<br/>
+		<br/>
+		<div style="text-align: right">
+				${model_cookie_bar_providers.length ? `<a href="#" onclick="cookieBarUpdateChoice(false); return false" class="cookie-bar-button cookie-bar-button-personalizza">Personalizza</a>` : ``}
+				<a href="#" onclick="cookieBarUpdateChoice('rejected'); return false" class="cookie-bar-button cookie-bar-button-rifiuta">Rifiuta</a>
+				<a href="#" onclick="cookieBarUpdateChoice('accepted'); return false" class="cookie-bar-button cookie-bar-button-accetta">Accetta</a>
+		</div>
+</div>`;
+	div.style.opacity = 0;
 	div = document.body.insertBefore(div, document.body.firstChild);
 	div.offsetHeight;
-	div.style.height = div.firstChild.offsetHeight + 'px';
+	div.style.opacity = 1;
 }
 
-function cookieLawOk() {
-	document.getElementById('cookie-law-bar').style.height = '0px';
-	setTimeout(function () {
+function cookieBarUpdateChoice(type) {
+	document.getElementById('cookie-law-bar').style.opacity = 0;
+	setTimeout(() => {
 		document.body.removeChild(document.getElementById('cookie-law-bar'));
 	}, 500);
 
-	scriviCookie('cookies-accepted', 1, 60 * 60 * 24 * 365 * 5);
+	let cookie = {type};
+	writeCookie('model-cookies-choice', JSON.stringify(cookie), 60 * 60 * 24 * 365 * 5);
 }

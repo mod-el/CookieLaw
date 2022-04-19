@@ -13,10 +13,9 @@ class Config extends Module_Config
 		$this->addAsset('config', 'config.php', function () {
 			return '<?php
 $config = [
-	\'name\' => \'Il sottoscritto\',
-	\'address\' => \'\',
-	\'title-align\' => \'left\',
-	\'analytics\' => false,
+	\'name\' => APP_NAME,
+	\'wrapper-class\' => \'container py-3\',
+	\'providers\' => [],
 ];
 ';
 		});
@@ -26,10 +25,10 @@ $config = [
 	{
 		return [
 			'rules' => [
-				'cookie-law' => 'cookie-law',
+				'cookie-policy' => 'cookie-policy',
 			],
 			'controllers' => [
-				'CookieLaw',
+				'CookiePolicy',
 			],
 		];
 	}
