@@ -4,7 +4,36 @@ use Model\Core\Module_Config;
 
 class Config extends Module_Config
 {
-//	public $configurable = true;
+
+	/**
+	 * @return bool
+	 */
+	public function makeCache(): bool
+	{
+		if ($this->model->moduleExists('Multilang')) {
+			$this->model->_Multilang->checkAndInsertWords('cookie-law', [
+				'row1' => [
+					'it' => 'Il sito che stai per visitare utilizza cookie o tecnologie simili, anche di terze parti, per finalità tecniche e, con il tuo consenso, anche per altre finalità come specificato nella [cookiepolicy].',
+				],
+				'row2' => [
+					'it' => 'Puoi acconsentire all’utilizzo di tali tecnologie utilizzando il pulsante “Accetta”. Chiudendo questa informativa, continui senza accettare.',
+				],
+				'cookie-policy' => [
+					'it' => 'cookie policy',
+				],
+				'accept' => [
+					'it' => 'Accetta',
+				],
+				'refuse' => [
+					'it' => 'Rifiuta',
+				],
+				'customize' => [
+					'it' => 'Personalizza',
+				],
+			], 'user');
+		}
+		return true;
+	}
 
 	/**
 	 */
@@ -15,6 +44,7 @@ class Config extends Module_Config
 $config = [
 	\'name\' => APP_NAME,
 	\'wrapper-class\' => \'container py-3\',
+	\'page-element\' => null,
 	\'providers\' => [],
 ];
 ';

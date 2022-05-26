@@ -24,10 +24,20 @@ class CookieLaw extends Module
 		$showCookieBar = $this->choice ? false : true;
 		$config = $this->retrieveConfig();
 
-		echo '<script>
-	var show_model_cookie_bar = ' . json_encode($showCookieBar) . ';
-	var model_cookie_bar_providers = ' . json_encode($config['providers']) . ';
-</script>';
+		echo '<script>';
+		if ($showCookieBar) {
+			echo 'var model_cookie_dict = ' . json_encode([
+					'row1' => $this->model->_Multilang->word('cookie-law.row1'),
+					'row2' => $this->model->_Multilang->word('cookie-law.row2'),
+					'cookie-policy' => $this->model->_Multilang->word('cookie-law.cookie-policy'),
+					'accept' => $this->model->_Multilang->word('cookie-law.accept'),
+					'refuse' => $this->model->_Multilang->word('cookie-law.refuse'),
+					'customize' => $this->model->_Multilang->word('cookie-law.customize'),
+				]) . ';';
+		}
+		echo 'var show_model_cookie_bar = ' . json_encode($showCookieBar) . ';';
+		echo 'var model_cookie_bar_providers = ' . json_encode($config['providers']) . ';';
+		echo '</script>';
 	}
 
 	public function getController(array $request, string $rule): ?array

@@ -13,13 +13,15 @@ window.addEventListener('load', function () {
 function showCookieBar() {
 	let div = document.createElement('div');
 	div.id = 'cookie-law-bar';
-	div.innerHTML = `<div>Il sito che stai per visitare utilizza cookie o tecnologie simili, anche di terze parti, per finalità tecniche e, con il tuo consenso, anche per altre finalità come specificato nella <a href="${PATH}cookie-policy">cookie policy</a>.<br/>
-		Puoi acconsentire all’utilizzo di tali tecnologie utilizzando il pulsante “Accetta”. Chiudendo questa informativa, continui senza accettare.<br/>
+	let row1 = model_cookie_dict['row1'].replace('[cookiepolicy]', `<a href="${PATH}cookie-policy">${model_cookie_dict['cookie-policy']}</a>`);
+	div.innerHTML = `<div>
+		${row1}<br/>
+		${model_cookie_dict['row2']}<br/>
 		<br/>
 		<div style="text-align: right">
-				${model_cookie_bar_providers.length ? `<a href="#" onclick="cookieBarUpdateChoice(false); return false" class="cookie-bar-button cookie-bar-button-personalizza">Personalizza</a>` : ``}
-				<a href="#" onclick="cookieBarUpdateChoice('rejected'); return false" class="cookie-bar-button cookie-bar-button-rifiuta">Rifiuta</a>
-				<a href="#" onclick="cookieBarUpdateChoice('accepted'); return false" class="cookie-bar-button cookie-bar-button-accetta">Accetta</a>
+				${model_cookie_bar_providers.length ? `<a href="#" onclick="cookieBarUpdateChoice(false); return false" class="cookie-bar-button cookie-bar-button-personalizza">${model_cookie_dict['customize']}</a>` : ``}
+				<a href="#" onclick="cookieBarUpdateChoice('rejected'); return false" class="cookie-bar-button cookie-bar-button-rifiuta">${model_cookie_dict['refuse']}</a>
+				<a href="#" onclick="cookieBarUpdateChoice('accepted'); return false" class="cookie-bar-button cookie-bar-button-accetta">${model_cookie_dict['accept']}</a>
 		</div>
 </div>`;
 	div.style.opacity = 0;
