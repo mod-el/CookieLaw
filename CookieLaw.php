@@ -27,12 +27,12 @@ class CookieLaw extends Module
 		echo '<script>';
 		if ($showCookieBar) {
 			echo 'var model_cookie_dict = ' . json_encode([
-					'row1' => $this->model->_Multilang->word('cookie-law.row1'),
-					'row2' => $this->model->_Multilang->word('cookie-law.row2'),
-					'cookie-policy' => $this->model->_Multilang->word('cookie-law.cookie-policy'),
-					'accept' => $this->model->_Multilang->word('cookie-law.accept'),
-					'refuse' => $this->model->_Multilang->word('cookie-law.refuse'),
-					'customize' => $this->model->_Multilang->word('cookie-law.customize'),
+					'row1' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.row1') : CookieLawDictionary::$words['row1']['it'],
+					'row2' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.row2') : CookieLawDictionary::$words['row2']['it'],
+					'cookie-policy' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.cookie-policy') : CookieLawDictionary::$words['cookie-policy']['it'],
+					'accept' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.accept') : CookieLawDictionary::$words['accept']['it'],
+					'refuse' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.refuse') : CookieLawDictionary::$words['refuse']['it'],
+					'customize' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.customize') : CookieLawDictionary::$words['customize']['it'],
 				]) . ';';
 		}
 		echo 'var show_model_cookie_bar = ' . json_encode($showCookieBar) . ';';
