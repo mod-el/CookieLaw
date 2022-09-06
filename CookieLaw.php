@@ -27,17 +27,27 @@ class CookieLaw extends Module
 		echo '<script>';
 		if ($showCookieBar) {
 			echo 'var model_cookie_dict = ' . json_encode([
-					'row1' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.row1') : CookieLawDictionary::$words['row1']['it'],
-					'row2' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.row2') : CookieLawDictionary::$words['row2']['it'],
-					'cookie-policy' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.cookie-policy') : CookieLawDictionary::$words['cookie-policy']['it'],
-					'accept' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.accept') : CookieLawDictionary::$words['accept']['it'],
-					'refuse' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.refuse') : CookieLawDictionary::$words['refuse']['it'],
-					'customize' => $this->model->moduleExists('Multilang') ? $this->model->_Multilang->word('cookie-law.customize') : CookieLawDictionary::$words['customize']['it'],
+					'row1' => $this->word('row1'),
+					'row2' => $this->word('row2'),
+					'cookie-policy' => $this->word('cookie-policy'),
+					'accept' => $this->word('accept'),
+					'refuse' => $this->word('refuse'),
+					'customize' => $this->word('customize'),
 				]) . ';';
 		}
 		echo 'var show_model_cookie_bar = ' . json_encode($showCookieBar) . ';';
 		echo 'var model_cookie_bar_providers = ' . json_encode($config['providers']) . ';';
 		echo '</script>';
+	}
+
+	private function word(string $w): string
+	{
+		if (class_exists('\\Model\\Multilang\\Dictionary')) {
+			return \Model\Multilang\Dictionary::get('cookie-law.' . $w);
+		} else {
+			$dictionary = require INCLUDE_PATH . 'model' . DIRECTORY_SEPARATOR . 'CookieLaw' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'dictionary.php';
+			return $dictionary[$w]['it'] ?? '';
+		}
 	}
 
 	public function getController(array $request, string $rule): ?array

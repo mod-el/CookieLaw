@@ -4,18 +4,6 @@ use Model\Core\Module_Config;
 
 class Config extends Module_Config
 {
-
-	/**
-	 * @return bool
-	 */
-	public function makeCache(): bool
-	{
-		if ($this->model->moduleExists('Multilang'))
-			$this->model->_Multilang->checkAndInsertWords('cookie-law', CookieLawDictionary::$words, 'user');
-
-		return true;
-	}
-
 	/**
 	 */
 	protected function assetsList()
