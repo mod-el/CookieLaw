@@ -1,4 +1,4 @@
-<?php namespace Model\CookieLaw;
+<?php namespace Model\CookieLaw\Providers;
 
 use Model\Multilang\AbstractMultilangProvider;
 
