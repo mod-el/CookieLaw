@@ -8,7 +8,7 @@ class RouterProvider extends AbstractRouterProvider
 	{
 		return [
 			[
-				'pattern' => '/cookie-policy',
+				'pattern' => 'cookie-policy',
 				'controller' => 'CookiePolicy',
 			],
 		];
