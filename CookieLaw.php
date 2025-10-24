@@ -50,13 +50,6 @@ class CookieLaw extends Module
 		}
 	}
 
-	public function getController(array $request, string $rule): ?array
-	{
-		return $rule === 'cookie-policy' ? [
-			'controller' => 'CookiePolicy',
-		] : null;
-	}
-
 	public function isAccepted(?string $cookieType = null): bool
 	{
 		if ($this->choice === null)

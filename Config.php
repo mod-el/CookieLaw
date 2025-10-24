@@ -20,18 +20,6 @@ $config = [
 		});
 	}
 
-	public function getRules(): array
-	{
-		return [
-			'rules' => [
-				'cookie-policy' => 'cookie-policy',
-			],
-			'controllers' => [
-				'CookiePolicy',
-			],
-		];
-	}
-
 	public function getConfigData(): ?array
 	{
 		return [
